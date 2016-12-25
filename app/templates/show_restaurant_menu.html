@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <h1 class="text-left">Menu for {{ restaurant_name }}</h1>
+    </div>
+    <div class="col-md-6">
+        <a class="btn btn-info pull-right" href={{ url_for('new_menu_item', id=restaurant_id) }}>New Item</a>
+    </div>
+</div>
+    {% if appetizers is not none %}
+        <h2>Appetizers</h2>
+        {% for appetizer in appetizers %}
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    {{ appetizer.name }}
+                </div>
+                <div class="col-md-6 text-right">
+                    {{ appetizer.price }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ appetizer.description }}
+                </div>
+            </div>
+            <div class="row">
+                 <div class="col-md-12">
+            <a class="btn btn-danger pull-right" href={{ url_for('delete_menu_item', id=restaurant_id, menu_id=appetizer.id) }}><p class="text-center">Delete</p></a>
+            <a class="btn btn-success pull-right" href={{ url_for('edit_menu_item', id=restaurant_id, menu_id=appetizer.id) }}><p class="text-center">Edit</p></a>
+        </div>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
+
+    {% if entrees is not none%}
+        <h2>Entrees</h2>
+        {% for entree in entrees %}
+           <div class="row">
+                <div class="col-md-6 text-left">
+                    {{ entree.name }}
+                </div>
+                <div class="col-md-6 text-right">
+                    {{ entree.price }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ entree.description }}
+                </div>
+            </div>
+            <div class="row">
+                 <div class="col-md-12">
+            <a class="btn btn-danger pull-right" id="delete-btn" href={{ url_for('delete_menu_item', id=restaurant_id, menu_id=entree.id) }}><p class="text-center">Delete</p></a>
+            <a class="btn btn-success pull-right" href={{ url_for('edit_menu_item', id=restaurant_id, menu_id=entree.id) }}><p class="text-center">Edit</p></a>
+        </div>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
+
+    {% if desserts %}
+        <h2>Desserts</h2>
+        {% for dessert in desserts %}
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    {{ dessert.name }}
+                </div>
+                <div class="col-md-6 text-right">
+                    {{ dessert.price }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ dessert.description }}
+                </div>
+            </div>
+             <div class="row">
+                 <div class="col-md-12">
+            <a class="btn btn-danger pull-right" id="delete-btn" href={{ url_for('delete_menu_item', id=restaurant_id, menu_id=dessert.id) }}><p class="text-center">Delete</p></a>
+            <a class="btn btn-success pull-right" href={{ url_for('edit_menu_item', id=restaurant_id, menu_id=dessert.id) }}><p class="text-center">Edit</p></a>
+        </div>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
+
+    {% if beverages %}
+        <h2>Beverages</h2>
+        {% for beverage in beverages %}
+           <div class="row">
+                <div class="col-md-6 text-left">
+                    {{ beverage.name }}
+                </div>
+                <div class="col-md-6 text-right">
+                    {{ beverage.price }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ beverage.description }}
+                </div>
+            </div>
+             <div class="row">
+                 <div class="col-md-12">
+            <a class="btn btn-danger pull-right" id="delete-btn" href={{ url_for('delete_menu_item', id=restaurant_id, menu_id=beverage.id) }}><p class="text-center">Delete</p></a>
+            <a class="btn btn-success pull-right" href={{ url_for('edit_menu_item', id=restaurant_id, menu_id=beverage.id) }}><p class="text-center">Edit</p></a>
+        </div>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
+    {% for menu_item in menu_items %}
+        {{ menu_item.name }}|
+        {{ menu_item.description }}|
+        {{ menu_item.price }}|
+        {{ menu_item.course }}|
+        <a href={{ url_for('edit_menu_item', id=restaurant_id, menu_id=menu_item.id) }}>Edit Item</a>
+        <a href={{ url_for('delete_menu_item', id=restaurant_id, menu_id=menu_item.id) }}>Delete Item</a>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

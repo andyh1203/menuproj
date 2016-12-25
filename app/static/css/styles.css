@@ -1,0 +1,17 @@
+h1 {
+  margin: 30px; /* Extra pixel top and bottom for border on buttons */
+  font-size: 28px;
+  line-height: 1.33;
+  border-radius: 6px;
+  margin: 0;
+}
+
+
+
+.restaurant-name {
+    font-size:20px;
+}
+
+#delete-button {
+    padding-left:10px;
+}
