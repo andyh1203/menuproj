@@ -1,8 +1,0 @@
-{% extends 'base.html' %}
-{% block content %}
-    <h1>Are you sure you want to delete {{ menu_item }}?</h1>
-    <form action="" method="POST">
-        {{ form.delete }}
-    </form>
-    <a href={{ url_for('restaurants') }}>Cancel</a>
-{% endblock %}
