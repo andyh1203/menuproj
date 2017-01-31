@@ -1,3 +1,3 @@
-#Very simple online menu app written in Python with Flask framework.
+#Online Menu App
 
 Try it out at https://menuproj123.herokuapp.com/
